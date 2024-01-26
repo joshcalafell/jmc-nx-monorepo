@@ -1,0 +1,30 @@
+{
+  "name": "store-front-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/store-front-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/store-front-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "store-front:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "store-front:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "store-front:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["store-front"]
+}
