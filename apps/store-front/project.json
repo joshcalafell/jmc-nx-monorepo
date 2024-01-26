@@ -82,6 +82,53 @@
         "buildTarget": "store-front:build",
         "staticFilePath": "dist/apps/store-front/browser"
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/store-front/.storybook",
+        "browserTarget": "store-front:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/store-front",
+        "configDir": "apps/store-front/.storybook",
+        "browserTarget": "store-front:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/store-front/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "store-front:build-storybook",
+        "staticFilePath": "dist/storybook/store-front"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "store-front:build-storybook:ci"
+        }
+      }
     }
   }
 }

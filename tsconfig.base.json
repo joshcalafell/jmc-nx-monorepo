@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@jmc-nx-monorepo/auth": ["libs/auth/src/index.ts"],
+      "@jmc-nx-monorepo/cart": ["libs/cart/src/index.ts"],
+      "@jmc-nx-monorepo/layout": ["libs/layout/src/index.ts"],
+      "@jmc-nx-monorepo/orders": ["libs/orders/src/index.ts"],
+      "@jmc-nx-monorepo/products": ["libs/products/src/index.ts"],
+      "@jmc-nx-monorepo/shared": ["libs/shared/src/index.ts"],
+      "@jmc-nx-monorepo/wishlist": ["libs/wishlist/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
